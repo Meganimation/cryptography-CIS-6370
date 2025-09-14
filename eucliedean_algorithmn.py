@@ -1,11 +1,10 @@
+#this gets the greatest common divisor of two numbers
 def euclidean_algorithm(a, b):
     while b:
         a, b = b, a % b
     return a
 
-# Example usage:
-# print(euclidean_algorithm(48, 18))  # Output: 6
-print(euclidean_algorithm(43, 17))
+print(euclidean_algorithm(3**52, 11))
 
 def extended_euclidean_algorithm(a, b):
     if a == 0:

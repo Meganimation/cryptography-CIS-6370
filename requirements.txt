@@ -1,2 +1,4 @@
 bcrypt
 questionary
+flask
+requests
