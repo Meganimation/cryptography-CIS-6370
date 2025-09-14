@@ -1,0 +1,6 @@
+***What is bcrypt?***
+bcrypt is a password hashing function designed for secure password storage. 
+***What does is do?***
+It incorporates a salt to protect against rainbow table attacks and is computationally intensive to defend against brute-force attacks by being intentionally slow. 
+It is widely used for hashing passwords in applications. 
+It's what I've used to hash your password!
