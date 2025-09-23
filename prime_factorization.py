@@ -11,7 +11,7 @@ def get_prime_factors(n):
     if n > 1:
         factors.append(n)
     return factors
-
+print(3**50)
 # Example usage:
 print(get_prime_factors(48))
 print(get_prime_factors(60))
