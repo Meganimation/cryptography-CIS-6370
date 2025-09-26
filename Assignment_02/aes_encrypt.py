@@ -2,7 +2,8 @@ from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 from Crypto.Util.Padding import unpad
 from Crypto.Random import get_random_bytes
-
+from Crypto.Protocol.KDF import PBKDF2
+import os
 import base64
 
 
@@ -35,12 +36,6 @@ def aes_decrypt(iv:str, ciphertext:str, key:bytes):
 #     user_input_decrypt = input("Enter text to decrypt: ")
 #     decrypted = aes_decrypt(encrypted['iv'], user_input_decrypt, key)
 #     print("Decrypted:", decrypted)
-
-
-
-
-from Crypto.Protocol.KDF import PBKDF2
-import os
 
 def derive_key_from_password(password: str, salt: bytes) -> bytes:
     # Derive a 256-bit AES key from the password and salt
@@ -83,7 +78,7 @@ def main():
     elif choice == '2':
         receive_and_decrypt_message()
     elif choice == '3':
-        # Predefined values for the hidden message
+        # These are the predefined values for the hidden message :)
         iv = "JZhmXSZO2C8GDP8v576y1g=="
         ciphertext = "DMCJmQzzuXTS8ySsMFXN0faLwqPCHfMp/zFAq+gs4U/kCJIZYHLLC1/xuKe7ni+sn2V4cFsaXUX/WtTFIBtoJFWRIBUoWv2B4d+ML8IIbjE="
         salt = "9alj0v3EVR7xZ8xkvgbezw=="
@@ -91,8 +86,4 @@ def main():
     else:
         print("Invalid choice.")
 
-#IV: shOd4RYxJ6VuzosNiz67Ww==
-#Ciphertext: HfnZyCdggq7vwJUtM/7i+Q==
-#Salt: Kph2CY9C4vPVxmIgLd4NQA==
-#Password: FAU
 main()

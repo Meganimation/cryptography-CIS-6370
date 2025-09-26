@@ -13,9 +13,9 @@ if user_type == "New User":
     print("Welcome, new user!")
     create_account()
 else:
-        #Todo: add login functionality here, verify username and password
+    #Todo: add login functionality here, verify username and password
     print("Welcome back!")
     temp_password = "thisistemp"
-    #convert temp_password via aes encryption
-    encrypted_password = aes_encrypt(temp_password)
+    #Todo: convert temp_password via aes encryption
+
     display_menu()
