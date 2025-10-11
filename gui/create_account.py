@@ -31,15 +31,15 @@ def attempt_to_create_account(root, show_main_menu):
             json.dump(accounts, f, indent=2)
     
     def go_back():
-        accountLabel.pack_forget()
-        eUserInput.pack_forget()
-        passwordLabel.pack_forget()
-        ePasswordInput.pack_forget()
-        confirmPasswordLabel.pack_forget()
-        eConfirmPasswordInput.pack_forget()
-        warningLabel.pack_forget()
-        myButton.pack_forget()
-        myBackButton.pack_forget()
+        # accountLabel.pack_forget()
+        # eUserInput.pack_forget()
+        # passwordLabel.pack_forget()
+        # ePasswordInput.pack_forget()
+        # confirmPasswordLabel.pack_forget()
+        # eConfirmPasswordInput.pack_forget()
+        # warningLabel.pack_forget()
+        # myButton.pack_forget()
+        # myBackButton.pack_forget()
         show_main_menu()
 
     def clear_warning(event=None):
