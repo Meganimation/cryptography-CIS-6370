@@ -6,7 +6,7 @@ This is a data encryption program that can be accessed by main users. You can cr
 
 Once logged in, you will be able to see a list of currently stored files, as well as having the ability to upload your own, which will use hybrid encryption scheme via AES and RSA to encrypt your file. Each file will then generate its own independent private key via RSA algorithm using the pycryptodome package - You must copy this to your clipboard and save the key. Without it you can no longer decrypt the file!
 
-If you forget the key, your only other option is to delete the file. To do this, you can enter the same password you used to log in with.
+If you forget the key, your only other option is to delete the file.
 
 I guess a good potential use case of this would be maybe using it as a way to safely store files and share them amongst peers by sharing the private key with them.
 
@@ -21,6 +21,7 @@ Some updates I would make if I had more time:
 -Adding more encryption options like size amounts and other hashing options
 -Allowing files to be renamed
 -Better UI
+-Allow Users to only be able to delete their own files
 
 ## Prerequisites
 

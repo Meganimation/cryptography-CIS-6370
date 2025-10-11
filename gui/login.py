@@ -4,40 +4,36 @@ from tkinter import StringVar
 import bcrypt
 import json
 
-def attempt_to_login(root, show_main_menu, show_landing_page):
+def attempt_to_login(frame, show_main_menu, show_landing_page):
+    # Clear the frame first
+    for widget in frame.winfo_children():
+        widget.destroy()
+        
     password_var = StringVar()
     warning_var = StringVar()
 
-    titleLabel = Label(root, text="Login", fg="green", bg="black", font=("Arial", 18, "bold"))
+    titleLabel = Label(frame, text="Login", fg="green", bg="black", font=("Arial", 18, "bold"))
     
-    accountLabel = Label(root, text="Username:", fg="green", bg="black", font=("Arial", 12))
-    eUserInput = Entry(root, width=40, bg="black", fg="green", borderwidth=2, 
+    accountLabel = Label(frame, text="Username:", fg="green", bg="black", font=("Arial", 12))
+    eUserInput = Entry(frame, width=40, bg="black", fg="green", borderwidth=2, 
                       relief="solid", font=("Arial", 11), insertbackground="green")
-    passwordLabel = Label(root, text="Password:", fg="green", bg="black", font=("Arial", 12))
-    ePasswordInput = Entry(root, width=40, bg="black", fg="green", borderwidth=2, 
+    passwordLabel = Label(frame, text="Password:", fg="green", bg="black", font=("Arial", 12))
+    ePasswordInput = Entry(frame, width=40, bg="black", fg="green", borderwidth=2, 
                           textvariable=password_var, show="*", relief="solid", 
                           font=("Arial", 11), insertbackground="green")
-    warningLabel = Label(root, textvariable=warning_var, fg="red", bg="black", font=("Arial", 10))
+    warningLabel = Label(frame, textvariable=warning_var, fg="red", bg="black", font=("Arial", 10))
     
-    # Create buttons first
-    myButton = Button(root, text="Login", padx=30, pady=12,
+    # Create buttons
+    myButton = Button(frame, text="Login", padx=30, pady=12,
                      bg="black", fg="green", font=("Arial", 12, "bold"), 
                      borderwidth=2, relief="solid", activebackground="green", 
                      activeforeground="black")
-    myBackButton = Button(root, text="Back", padx=30, pady=12,
+    myBackButton = Button(frame, text="Back", padx=30, pady=12,
                          bg="black", fg="green", font=("Arial", 12), 
                          borderwidth=2, relief="solid", activebackground="green", 
                          activeforeground="black")
     
     def go_back():
-        titleLabel.pack_forget()
-        accountLabel.pack_forget()
-        eUserInput.pack_forget()
-        passwordLabel.pack_forget()
-        ePasswordInput.pack_forget()
-        warningLabel.pack_forget()
-        myButton.pack_forget()
-        myBackButton.pack_forget()
         show_main_menu()
 
     def clear_warning(event=None):
@@ -67,7 +63,7 @@ def attempt_to_login(root, show_main_menu, show_landing_page):
             if account_data["username"] == account:
                 if bcrypt.checkpw(password.encode(), account_data["password"].encode()):
                     print("Login successful!")
-                    show_landing_page(root, account)
+                    show_landing_page(frame.master, account)
                 else:
                     print("Login failed.")
                     warning_var.set("Invalid username or password.")
@@ -76,14 +72,9 @@ def attempt_to_login(root, show_main_menu, show_landing_page):
         print("Account not found.")
         warning_var.set("Invalid username or password.")
 
-    myButton = Button(root, text="Login", padx=30, pady=12, command=on_submit,
-                     bg="black", fg="green", font=("Arial", 12, "bold"), 
-                     borderwidth=2, relief="solid", activebackground="green", 
-                     activeforeground="black")
-    myBackButton = Button(root, text="Back", padx=30, pady=12, command=go_back,
-                         bg="black", fg="green", font=("Arial", 12), 
-                         borderwidth=2, relief="solid", activebackground="green", 
-                         activeforeground="black")
+    # Configure button commands after functions are defined
+    myButton.config(command=on_submit)
+    myBackButton.config(command=lambda: [clear_warning(), go_back()])
 
     titleLabel.pack(pady=(30, 20))
     accountLabel.pack(pady=(10, 5))
